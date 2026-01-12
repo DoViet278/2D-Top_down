@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
     [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private TrailRenderer trail;
 
     private PlayerControls playerControls;
     private Vector2 movement;
@@ -15,7 +16,14 @@ public class PlayerController : MonoBehaviour
 
     private bool facingLeft = false;
 
-    public bool FacingLeft { get { return facingLeft; } set { facingLeft = value; } }
+    //dash
+    private float dashTime =.2f;
+    private float dashSpeed = 4f;
+    private float dashCooldown = .25f;
+    private bool isDashing = false;
+    private float startingMoveSpeed;
+
+    public bool FacingLeft { get { return facingLeft; } }
 
     private void Awake()
     {
@@ -26,6 +34,11 @@ public class PlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
+    private void Start()
+    {
+        playerControls.Combat.Dash.performed += _ => Dash();    
+        startingMoveSpeed = moveSpeed;
+    }
     private void OnEnable()
     {
         playerControls.Enable();
@@ -64,12 +77,32 @@ public class PlayerController : MonoBehaviour
         if(mousePosition.x < screenPoint.x)
         {
             sr.flipX = true;
-            FacingLeft = true;
+            facingLeft = true;
         }
         else 
         { 
             sr.flipX= false;
-            FacingLeft = false;
+            facingLeft = false;
         }
+    }
+
+    private void Dash() 
+    {
+        if(!isDashing)
+        {
+            isDashing = true;
+            moveSpeed *= dashSpeed;
+            trail.emitting = true;
+            StartCoroutine(EndDashRoutine());
+        }
+    }
+
+    private IEnumerator EndDashRoutine() 
+    {
+        yield return new WaitForSeconds(dashTime);  
+        moveSpeed = startingMoveSpeed;
+        trail.emitting = false;
+        yield return new WaitForSeconds(dashCooldown);
+        isDashing = false;
     }
 }

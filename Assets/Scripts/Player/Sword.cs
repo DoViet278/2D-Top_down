@@ -7,12 +7,13 @@ public class Sword : MonoBehaviour
     [SerializeField] private GameObject slashAnimPrefab;
     [SerializeField] private Transform slashAnimSpawnPoint;
     [SerializeField] private Transform weaponCollider;
+    [SerializeField] private float attackCooldown = 0.5f;
 
     private PlayerControls playerControls;
     private Animator animator;
     private PlayerController playerController;
     private ActiveWeapon activeWeapon;
-
+    private bool atkButtonDown, isAttacking = false;
     private GameObject slash;
 
     private void Awake()
@@ -25,7 +26,8 @@ public class Sword : MonoBehaviour
 
     private void Start()
     {
-        playerControls.Combat.Attack.started += _ => Attack();
+        playerControls.Combat.Attack.started += _ => StartAttacking();
+        playerControls.Combat.Attack.canceled += _ => StopAttacking();  
     }
 
     private void OnEnable()
@@ -36,16 +38,37 @@ public class Sword : MonoBehaviour
     private void Update()
     {
         MouseFollowWithOffset();
+        Attack();   
+    }
+
+    private void StartAttacking() 
+    {
+        atkButtonDown = true;
+    }
+
+    private void StopAttacking()
+    {
+        atkButtonDown = false;
     }
 
     private void Attack() 
     {
-        animator.SetTrigger("Attack");
-        weaponCollider.gameObject.SetActive(true);
+       if(atkButtonDown && !isAttacking)
+       {
+            isAttacking = true;
+            animator.SetTrigger("Attack");
+            weaponCollider.gameObject.SetActive(true);
+            slash = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
+            slash.transform.parent = this.transform.parent;
+            StartCoroutine(AttackCDRoutine());  
+        }
 
-        slash = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
-        slash.transform.parent = this.transform.parent;
+    }
 
+    private IEnumerator AttackCDRoutine()
+    {
+        yield return new WaitForSeconds(attackCooldown);
+        isAttacking = false;
     }
 
     public void DoneAtkAnimEvent() {
