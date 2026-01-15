@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
-    public static PlayerController instance;
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private TrailRenderer trail;
 
@@ -25,9 +24,9 @@ public class PlayerController : MonoBehaviour
 
     public bool FacingLeft { get { return facingLeft; } }
 
-    private void Awake()
+    protected override void Awake()
     {
-        instance = this;
+        base.Awake();
         playerControls = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
