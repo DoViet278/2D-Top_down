@@ -6,6 +6,7 @@ public class PlayerController : Singleton<PlayerController>
 {
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private TrailRenderer trail;
+    [SerializeField] private Transform weaponController;
 
     private PlayerControls playerControls;
     private Vector2 movement;
@@ -66,6 +67,11 @@ public class PlayerController : Singleton<PlayerController>
     private void Move()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    public Transform GetWeaponCollider()
+    {
+        return weaponController;
     }
 
     private void AdjustFacingDirection()

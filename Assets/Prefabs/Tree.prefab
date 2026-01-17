@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7259182210909239132}
   - component: {fileID: 2407612973487730849}
   - component: {fileID: 4765009366625745582}
+  - component: {fileID: 8194169006278700550}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: 803dba4a07011044d9a297a9e08f2cb9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -171,3 +172,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tranparencyAmount: 0.8
   fadeTime: 0.4
+--- !u!114 &8194169006278700550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675584387828443391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b847e7fdd35a340a933e90e92ba7b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
