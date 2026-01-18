@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Staff
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 3463871836844289441, guid: f530a8049d92ecd40a5624fccdde6ca2, type: 3}
-  countdownTime: 1
+  countdownTime: 0.5
   weaponDamage: 2
   weaponRange: 8

@@ -101,6 +101,9 @@ GameObject:
   - component: {fileID: 923747028798327296}
   - component: {fileID: 1472209767450512249}
   - component: {fileID: 2218094098127120491}
+  - component: {fileID: 4818661875648444073}
+  - component: {fileID: 6695612850600886148}
+  - component: {fileID: 8138317322641483544}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -250,6 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28c8a0050dd7d740a62e7bdd9adfe24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roamChangeDir: 2
 --- !u!114 &5031855092485393891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   deathVfxPrefab: {fileID: 2032330039006044800, guid: c4302bfa49ecf32479c61c7bb2f32ffb, type: 3}
+  knockBackThrust: 15
 --- !u!114 &1472209767450512249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,3 +308,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: 48ed46082efda184ca1d68f4ebb3f687, type: 2}
   flashDuration: 0.1
+--- !u!95 &4818661875648444073
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406819214484060190}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39b5d890a92223643a541dc98b75b22f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6695612850600886148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406819214484060190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb7fa961570f684dba1946362243cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!210 &8138317322641483544
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406819214484060190}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0

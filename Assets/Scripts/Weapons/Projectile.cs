@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectTile : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 22f;
     [SerializeField] private GameObject particleOnHit;
@@ -33,7 +33,6 @@ public class ProjectTile : MonoBehaviour
 
         if(!collision.isTrigger &&  (enemyHealth || indestructible))
         {
-            enemyHealth?.TakeDamage(weaponInfo.weaponDamage);
             Instantiate(particleOnHit, transform.position, transform.rotation);
             Destroy(gameObject);
         }
