@@ -2,21 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveInventory : MonoBehaviour
+public class ActiveInventory : Singleton<ActiveInventory>
 {
     private int activeSlot = 0;
     private PlayerControls playerControls;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         playerControls = new PlayerControls();  
     }
 
     private void Start()
     {
         playerControls.Inventory.Keyboard.performed += ctx => ToogleActiveSlot((int)ctx.ReadValue<float>()-1);
-
-        ToogleHighlight(0);
     }
 
     private void OnEnable()
@@ -24,7 +23,11 @@ public class ActiveInventory : MonoBehaviour
         playerControls.Inventory.Enable();
     }
 
-    
+    public void EquipStartWeapon()
+    {
+        ToogleHighlight(0);
+    }
+
     private void ToogleActiveSlot(int num)
     {
         ToogleHighlight(num);
@@ -45,6 +48,11 @@ public class ActiveInventory : MonoBehaviour
 
     private void ChangeActiveWeapon()
     {
+        if(PlayerHealth.Instance.isDead)
+        {
+            return;
+        }
+
         if(ActiveWeapon.Instance.CurrentActiveWeapon != null)
         {
             Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);    

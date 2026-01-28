@@ -13,6 +13,8 @@ public class RandomIdleAnimation : MonoBehaviour
 
     private void Start()
     {
+        if (!animator) return;
+
         AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
         animator.Play(currentState.fullPathHash, -1, Random.Range(0f, 1f)); 
     }

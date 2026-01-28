@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 4818661875648444073}
   - component: {fileID: 6695612850600886148}
   - component: {fileID: 8138317322641483544}
+  - component: {fileID: -6758744094894714892}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -254,6 +255,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roamChangeDir: 2
+  attackRange: 0
+  enemyType: {fileID: 0}
+  stopMovingWhileAttacking: 0
 --- !u!114 &5031855092485393891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,3 +357,18 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &-6758744094894714892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406819214484060190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e7022233b204b479ec97b52476f7f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefabs: {fileID: 3321324088236916080, guid: 144de781dc68e194daa22d4721212488, type: 3}
+  healthPrefabs: {fileID: 3321324088236916080, guid: 8a876eb15f62f0f49a699786b28b7e45, type: 3}
+  staminaPrefabs: {fileID: 3321324088236916080, guid: f28083ce90920644dbb3454b34c9c02a, type: 3}

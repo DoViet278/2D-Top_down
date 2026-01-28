@@ -27,7 +27,7 @@ public class EnemyPathFinding : MonoBehaviour
         {
             sr.flipX = true;
         }
-        else
+        else if(moveDir.x > 0)
         {
             sr.flipX = false;
         }
@@ -36,5 +36,10 @@ public class EnemyPathFinding : MonoBehaviour
     public void MoveTo(Vector2 targetPosition)
     {
         moveDir = targetPosition;   
+    }
+
+    public void StopMoving()
+    {
+        moveDir = Vector3.zero;
     }
 }
